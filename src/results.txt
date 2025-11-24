@@ -1,0 +1,6 @@
+Model: gpt-4.1
+Query: When was squash invented?
+Output: Based on the retrieved documents, squash (specifically doubles squash) originated in North America during the early 20th century, gaining particular popularity in Canada and the United States. 
+
+Therefore, squash was invented in the early 20th century.
+
