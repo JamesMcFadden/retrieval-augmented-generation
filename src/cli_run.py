@@ -6,6 +6,7 @@ import cli_utils as LLM
 
 MODEL = os.environ.get("MODEL", "gpt-oss-120b")
 
+
 def LLM_call():
 
     llm = LLM.initialize_llm()
@@ -13,6 +14,7 @@ def LLM_call():
     output = LLM.message_handler(llm)
 
     return output
+
 
 def main():
 

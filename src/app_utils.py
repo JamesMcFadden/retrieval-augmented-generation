@@ -15,8 +15,11 @@ load_dotenv()
 
 LLM_URL = ""
 LLM_TEMP = 0.0
-MODEL = os.environ.get("MODEL", "") # Enter default model into environment variable
-TOKEN = os.environ.get("FMAPI_KEY") # Generate key on OpenAI, store in .env file at top level
+MODEL = os.environ.get("MODEL", "")  # Enter default model into environment variable
+TOKEN = os.environ.get(
+    "FMAPI_KEY"
+)  # Generate key on OpenAI, store in .env file at top level
+
 
 def initialize_llm(model: str = MODEL, base_url: str = LLM_URL, temp: float = LLM_TEMP):
     """Creates LLM.
@@ -35,23 +38,26 @@ def initialize_llm(model: str = MODEL, base_url: str = LLM_URL, temp: float = LL
     model = "gpt-4.1"
 
     try:
-        with open("/Users/jamesmcfadden/Documents/retrieval-augmented-generation/src/openai_key.txt", "r") as f:
+        with open(
+            "/Users/jamesmcfadden/Documents/retrieval-augmented-generation/src/openai_key.txt",
+            "r",
+        ) as f:
             api_key = f.read().strip()
     except FileNotFoundError:
         raise RuntimeError(
             "No OpenAI API key found. Set OPENAI_API_KEY or create openai_key.txt."
         )
 
-
     llm = ChatOpenAI(
         model=model,
         base_url=base_url,
         openai_api_key=api_key,
         streaming=False,
-        temperature=temp
+        temperature=temp,
     )
 
     return llm
+
 
 def run_rag_pipeline(query: str) -> str:
     loader = DirectoryLoader(
@@ -69,6 +75,8 @@ def run_rag_pipeline(query: str) -> str:
     results = retriever.invoke(query)
 
     llm = initialize_llm()
-    response = llm.invoke(f"{query}\nAnswer using the retrieved documents:\n{results}").content
+    response = llm.invoke(
+        f"{query}\nAnswer using the retrieved documents:\n{results}"
+    ).content
 
     return response

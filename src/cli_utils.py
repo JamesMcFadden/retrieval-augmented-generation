@@ -15,8 +15,11 @@ load_dotenv()
 
 LLM_URL = "https://api.openai.com/v1/"
 LLM_TEMP = 0.0
-MODEL = os.environ.get("MODEL", "") # Enter default model into environment variable
-TOKEN = os.environ.get("FMAPI_KEY") # Generate key on OpenAI, store in .env file at top level
+MODEL = os.environ.get("MODEL", "")  # Enter default model into environment variable
+TOKEN = os.environ.get(
+    "FMAPI_KEY"
+)  # Generate key on OpenAI, store in .env file at top level
+
 
 def initialize_llm(model: str = MODEL, base_url: str = LLM_URL, temp: float = LLM_TEMP):
     """Creates LLM.
@@ -36,10 +39,11 @@ def initialize_llm(model: str = MODEL, base_url: str = LLM_URL, temp: float = LL
         base_url=base_url,
         openai_api_key=TOKEN,
         streaming=False,
-        temperature=temp
+        temperature=temp,
     )
 
     return llm
+
 
 def message_handler(llm: Any) -> tuple:
     """Handles prompt messages and agent responses.
@@ -53,7 +57,11 @@ def message_handler(llm: Any) -> tuple:
     """
 
     # Modify for flexible data types
-    loader = DirectoryLoader("/Users/jamesmcfadden/Documents/retrieval-augmented-generation/data", glob="*.pdf", loader_cls=PyPDFLoader)
+    loader = DirectoryLoader(
+        "/Users/jamesmcfadden/Documents/retrieval-augmented-generation/data",
+        glob="*.pdf",
+        loader_cls=PyPDFLoader,
+    )
     documents = loader.load()
     splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
     docs = splitter.split_documents(documents)
@@ -64,6 +72,8 @@ def message_handler(llm: Any) -> tuple:
 
     results = retriever.invoke(prompt)
 
-    output = llm.invoke(f"{query}\n\nAnswer using the retrieved documents:\n{results}").content
+    output = llm.invoke(
+        f"{query}\n\nAnswer using the retrieved documents:\n{results}"
+    ).content
 
     return output, query
