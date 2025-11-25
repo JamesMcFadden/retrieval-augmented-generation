@@ -31,10 +31,22 @@ def initialize_llm(model: str = MODEL, base_url: str = LLM_URL, temp: float = LL
         llm: The LLM to use as the model for the agent.
     """
 
+    api_key = ""
+    model = "gpt-4.1"
+
+    try:
+        with open("/Users/jamesmcfadden/Documents/retrieval-augmented-generation/src/openai_key.txt", "r") as f:
+            api_key = f.read().strip()
+    except FileNotFoundError:
+        raise RuntimeError(
+            "No OpenAI API key found. Set OPENAI_API_KEY or create openai_key.txt."
+        )
+
+
     llm = ChatOpenAI(
         model=model,
         base_url=base_url,
-        openai_api_key=TOKEN,
+        openai_api_key=api_key,
         streaming=False,
         temperature=temp
     )

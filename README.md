@@ -1,6 +1,14 @@
 # retrieval-augmented-generation
 This repository implements retrieval augmented generation leveraging OpenAI's GPT model as well as local data.
 
+Code for creating executable:
+  pyinstaller --clean --onefile \
+  --name RAGflaskapp \
+  --add-data "templates:templates" \
+  --add-data "openai_key.txt:." \
+  app.py
+
+
 
 ## Table of contents
 
