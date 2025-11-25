@@ -1,15 +1,14 @@
 import os
 from pathlib import Path
-from dotenv import load_dotenv
 from typing import Any, Union
 
-from langchain_openai import ChatOpenAI
-from langchain_community.vectorstores import DocArrayInMemorySearch
-from langchain_community.retrievers import BM25Retriever
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+from dotenv import load_dotenv
 from langchain_chroma import Chroma
 from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader
-
+from langchain_community.retrievers import BM25Retriever
+from langchain_community.vectorstores import DocArrayInMemorySearch
+from langchain_openai import ChatOpenAI
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 load_dotenv()
 

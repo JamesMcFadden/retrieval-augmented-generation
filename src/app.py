@@ -1,5 +1,8 @@
-import os, sys
+import os
+import sys
+
 from flask import Flask, render_template, request
+
 from app_utils import run_rag_pipeline
 
 app = Flask(__name__)
