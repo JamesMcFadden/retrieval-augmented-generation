@@ -4,3 +4,7 @@ Output: Based on the retrieved documents, squash (specifically doubles squash) o
 
 Therefore, squash was invented in the early 20th century.
 
+Model: gpt-4.1
+Query: What color is the sky?
+Output: Based on the retrieved documents, there is no information provided about the color of the sky. The documents focus on the history and details of racquet sports such as racquets and court tennis, and do not mention the sky or its color.
+

@@ -42,10 +42,10 @@ def initialize_llm(model: str = MODEL, base_url: str = LLM_URL, temp: float = LL
             "r",
         ) as f:
             api_key = f.read().strip()
-    except FileNotFoundError:
+    except FileNotFoundError as exc:
         raise RuntimeError(
             "No OpenAI API key found. Set OPENAI_API_KEY or create openai_key.txt."
-        )
+        ) from exc
 
     llm = ChatOpenAI(
         model=model,

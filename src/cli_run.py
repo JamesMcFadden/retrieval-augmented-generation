@@ -9,7 +9,7 @@ import cli_utils as LLM
 MODEL = os.environ.get("MODEL", "gpt-oss-120b")
 
 
-def LLM_call():
+def llm_call():
     """Calls LLM.
 
     Args: None
@@ -26,8 +26,10 @@ def LLM_call():
 
 
 def main():
-
-    output, query = LLM_call()
+    """
+    Executes CLI RAG app and saves results.
+    """
+    output, query = llm_call()
 
     with open("results.txt", "a", encoding="utf-8") as file:
         file.write(f"Model: {os.environ['MODEL']}\n")

@@ -66,7 +66,8 @@ def message_handler(llm: Any) -> tuple:
     retriever = BM25Retriever.from_documents(docs)
 
     query = input("Type query: ")
-    prompt = f"{query} All previous text has been a query. Answer the query leveraging the information in the files"
+    prompt = f"{query} All previous text has been a query. \
+    Answer the query leveraging the information in the files"
 
     results = retriever.invoke(prompt)
 
