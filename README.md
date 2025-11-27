@@ -8,6 +8,15 @@ Code for creating executable:
   --add-data "openai_key.txt:." \
   app.py
 
+To update executable to new version:
+git add .
+git commit -m "Bump version to v1.2.0"
+# create the tag locally
+git tag -a v1.2.0 -m "Release v1.2.0"
+
+# push just that tag to GitHub
+git push origin v1.2.0
+
 
 
 ## Table of contents
