@@ -1,5 +1,6 @@
-import os
-import sys
+"""
+This script runs retrieval augmented generation through a web app
+"""
 
 from flask import Flask, render_template, request
 
@@ -10,6 +11,10 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    """Implements RAG web app.
+
+    Returns: Rendering of web app.
+    """
     response = ""
     query = ""
 

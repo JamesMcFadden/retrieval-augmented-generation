@@ -1,12 +1,13 @@
+"""
+This script provides utility functions for the command line interface implementation of the RAG app
+"""
+
 import os
-from pathlib import Path
-from typing import Any, Union
+from typing import Any
 
 from dotenv import load_dotenv
-from langchain_chroma import Chroma
 from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader
 from langchain_community.retrievers import BM25Retriever
-from langchain_community.vectorstores import DocArrayInMemorySearch
 from langchain_openai import ChatOpenAI
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
@@ -49,10 +50,8 @@ def message_handler(llm: Any) -> tuple:
 
     Args:
         llm: The llm to utilize.
-        prompt: The path to the prompt file to feed the agent.
-        text_to_analyze: Supplied text to analyze using the given prompt.
 
-    Returns: The rational for the final response, and the final response from the agent.
+    Returns: The final response from the agent.
     """
 
     # Modify for flexible data types

@@ -1,6 +1,8 @@
+"""
+This script runs retrieval augmented generation from the command line
+"""
+
 import os
-from pathlib import Path
-from typing import Union
 
 import cli_utils as LLM
 
@@ -8,6 +10,13 @@ MODEL = os.environ.get("MODEL", "gpt-oss-120b")
 
 
 def LLM_call():
+    """Calls LLM.
+
+    Args: None
+
+    Returns:
+        output: The model output of the user's query
+    """
 
     llm = LLM.initialize_llm()
 

@@ -1,12 +1,12 @@
+"""
+This script provides utility functions for the web implementation of the RAG app
+"""
+
 import os
-from pathlib import Path
-from typing import Any, Union
 
 from dotenv import load_dotenv
-from langchain_chroma import Chroma
 from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader
 from langchain_community.retrievers import BM25Retriever
-from langchain_community.vectorstores import DocArrayInMemorySearch
 from langchain_openai import ChatOpenAI
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
@@ -59,6 +59,14 @@ def initialize_llm(model: str = MODEL, base_url: str = LLM_URL, temp: float = LL
 
 
 def run_rag_pipeline(query: str) -> str:
+    """Handles prompt messages and agent responses.
+
+    Args:
+        query: The user's request.
+
+    Returns: The final response from the agent.
+    """
+
     loader = DirectoryLoader(
         "/Users/jamesmcfadden/Documents/retrieval-augmented-generation/data",
         glob="*.pdf",
