@@ -5,7 +5,7 @@ Code for creating executable:
   pyinstaller --clean --onefile \
   --name RAGflaskapp \
   --add-data "templates:templates" \
-  --add-data "openai_key.txt:." \
+  --add-data "data:data" \
   app.py
 
 To update executable to new version:
