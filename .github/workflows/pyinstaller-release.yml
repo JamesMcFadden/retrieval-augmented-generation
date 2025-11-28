@@ -26,7 +26,7 @@ jobs:
 
       - name: Build executable with PyInstaller
         run: |
-          pyinstaller app.py --onefile --noconsole
+          # pyinstaller app.py --onefile --noconsole
           pyinstaller --clean --onefile \
           --name RAGflaskapp \
           --add-data "src/templates:templates" \
