@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-pyinstaller:
-    runs-on: windows-latest   # for a Windows .exe; adjust if needed
+    runs-on: macos-latest   # for a MacOSs .exe; adjust if needed
 
     steps:
       - name: Check out code
