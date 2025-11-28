@@ -26,11 +26,8 @@ jobs:
 
       - name: Build executable with PyInstaller
         run: |
-          pyinstaller --clean --onefile \
-          --name RAGflaskapp \
-          --add-data "src/templates:templates" \
-          --add-data "src/openai_key.txt:." \
-          app.py
+          # pyinstaller app.py --onefile --noconsole
+          pyinstaller --clean --onefile --name RAGflaskapp --add-data "src/templates:templates" --add-data "src/openai_key.txt:." app.py
           # or use your .spec file:
           # pyinstaller your_app.spec
 
